@@ -12,7 +12,8 @@
  *= require_tree .
  */
 
-/*@import "twitter/bootstrap";*/
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
 
 ol {
 	list-style-type: none;

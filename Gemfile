@@ -11,34 +11,33 @@ gem 'formtastic'
 gem 'will_paginate'
 gem 'pg'
 gem 'carrierwave'
-gem 'bootstrap-sass'
 gem 'formtastic-bootstrap'
 gem 'jquery-tablesorter'
 gem 'ckeditor'
 gem 'country_select'
 gem 'acts_as_list'
-gem 'sass-rails',   '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
-gem 'uglifier', '>= 1.0.3'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
+# Gems used only for assets and not required
+# in production environments by default.
 group :assets do
-
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-
+  gem 'therubyracer', :platforms => :ruby
+  gem "less-rails"
+  gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
 end
+
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
 #heroku
 gem 'rails_12factor', group: :production
-gem 'therubyracer',   platforms: :ruby
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
