@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'devise'
 gem 'formtastic'
 gem 'will_paginate'
@@ -33,6 +33,10 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+#heroku
+gem 'rails_12factor', group: :production
+gem 'therubyracer',   platforms: :ruby
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
