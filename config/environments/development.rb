@@ -15,6 +15,7 @@ AuthorNames::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,7 +35,7 @@ AuthorNames::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
-  
+
   config.action_mailer.default_url_options = { :host => '0.0.0.0:3000' }
   config.action_mailer.smtp_settings = { :enable_starttls_auto => false }
 end
