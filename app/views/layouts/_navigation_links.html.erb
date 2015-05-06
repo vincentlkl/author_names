@@ -3,7 +3,7 @@
 	<li><%= link_to "Home", root_path %></li>
 	<% if current_user.nil? %>
 	  <li><%= link_to "Sign In", new_user_session_path %></li>
-	
+
 	<% elsif current_user.try(:superadmin?) %>
 	  <li><%= link_to "Libraries", libraries_path %></li>
 	  <li><%= link_to "Publishers", publishers_path %></li>
@@ -11,59 +11,63 @@
   		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
 	        <li><%= link_to "View Responses", responses_path %></li>
 			<li><%= link_to "View Author Contact Info", authors_path %></li>
-  	    </ul>	
+  	    </ul>
   	  </li>
 	  <li><%= link_to "Form Items", form_items_path %></li>
 	  <li><%= link_to "Users", users_path %></li>
 	  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
 	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-	
+
 	<% elsif current_user.is_lib_staff? %>
 	  <li><%= link_to "Author Data", responses_path %></li>
 	  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
 	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-	
-	<% elsif current_user.is_lib_admin? %>  
+
+	<% elsif current_user.is_lib_admin? %>
 	  <li><%= link_to "Author Data", responses_path %></li>
 	  <li><%= link_to "Users", users_path %></li>
 	  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
 	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-    
+
 	<% elsif current_user.is_pub_staff? %>
 	  <li><%= link_to "View Questionnaires", questionnaires_path %></li>
 	  <li class="dropdown"><a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Manage Author Data <b class="caret"></b></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
 	      <li><%= link_to "View Responses", responses_path %></li>
 		  <li><%= link_to "View Author Contact Info", authors_path %></li>
-	    </ul>	
+	    </ul>
 	  </li>
       <li><%= link_to "Edit Account", edit_user_registration_path %></li>
-      <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>  
-  	
-	<% elsif current_user.is_pub_admin? %>  
+      <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+
+	<% elsif current_user.is_pub_admin? %>
       <li class="dropdown"><a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Questionnaires<b class="caret"></b></a>
 	    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
 	      <li><%= link_to "View Questionnaires", questionnaires_path %></li>
       	  <li><%= link_to "View Form Items", form_items_path %></li>
-        </ul>	
+        </ul>
   	  </li>
   	  <li class="dropdown"><a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Author Data <b class="caret"></b></a>
   		<ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
 	        <li><%= link_to "View Responses", responses_path %></li>
 			<li><%= link_to "View Author Contact Info", authors_path %></li>
-  	    </ul>	
+  	    </ul>
   	  </li>
   	  <li><%= link_to "Manage Users", users_path %></li>
 	  <li><%= link_to "Edit Publisher Profile", edit_publisher_path(current_user.publisher.id) %></li>
   	  <li><%= link_to "Edit Your Account", edit_user_registration_path %></li>
-  	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>  
-	
-	<% else %>  
+  	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+
+	<% else %>
 	  <% unless current_user.publisher.nil? %>
 	    <% unless current_user.find_profile(current_user.publisher.id).nil? %>
 	      <li><%= link_to "Edit Contact Info", edit_author_path(current_user.find_profile(current_user.publisher.id)) %></li>
-		<% end %>   
-	  <% end %>  
+		<% end %>
+	  <% end %>
 	  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
 	  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+	<% end %>
+
+	<% if current_user %>
+		<li><%= link_to "Invite user", new_user_invitation_path %></li>
 	<% end %>

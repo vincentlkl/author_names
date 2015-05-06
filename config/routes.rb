@@ -13,7 +13,7 @@ AuthorNames::Application.routes.draw do
       get 'isni'
       get 'responses'
     end
-  end  
+  end
 
 
   resources :questionnaires do
@@ -26,7 +26,7 @@ AuthorNames::Application.routes.draw do
       get 'preview'
       get 'move'
     end
-  end  
+  end
 
 
   resources :form_items do
@@ -38,16 +38,16 @@ AuthorNames::Application.routes.draw do
       post 'import'
       get 'destroy_all_items'
     end
-  end  
+  end
 
   resources :libraries
 
 
   resources :publishers
 
-
+  devise_for :users, :controllers => { :invitations => 'invitations' }
   devise_for :users
-  
+
   resources :users do
     collection do
       get 'authors'
@@ -55,13 +55,13 @@ AuthorNames::Application.routes.draw do
       get 'make_staff'
     end
   end
-  
+
   resources :welcome do
     collection do
       get 'author_home'
     end
   end
-  
+
   resources :form_item_groups
 
   # The priority is based upon order of creation:

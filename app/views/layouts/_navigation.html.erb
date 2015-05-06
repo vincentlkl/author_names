@@ -13,14 +13,14 @@
 	<% unless current_user.nil? %>
 	  <% if current_user.user_type == "Superadmin" %>
 	    <div style="float: right;" class = 'navbar-brand'>Affiliation: OAQ Admin</div>
-	  <% else %>
+]	  <% else %>
 	    <% if current_user.user_type == "Unassigned" && current_user.affiliation != "Unaffiliated" %>
 	      <div style="float: right;" class = 'navbar-brand'>Affiliation: <%= current_user.affiliation %> Staff, Awaiting Approval</div>
 		<% else %>
 		  <div style="float: right;" class = 'navbar-brand'>Affiliation: <%= current_user.affiliation %> <%= current_user.user_type %></div>
-		<% end %>    
+		<% end %>
 	  <% end %>
-	<% end %>  
+	<% end %>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
