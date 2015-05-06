@@ -36,6 +36,7 @@ end
 
 group :development do
   gem 'letter_opener',   '~> 1.3.0'
+  gem 'better_errors',   '~> 1.1.0'
 end
 
 gem 'jquery-rails'
