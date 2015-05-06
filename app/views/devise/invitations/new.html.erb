@@ -8,5 +8,14 @@
   <%= f.text_field field %></p>
 <% end -%>
 
+  <p>
+    <%= f.check_box :staff %>
+    <%= f.label :staff %>
+  </p>
+
+  <p>
+    <%= f.check_box :author %>
+    <%= f.label :author %>
+  </p>
   <p><%= f.submit "Send an invitation", :class => "btn btn-primary" %></p>
 <% end %>
