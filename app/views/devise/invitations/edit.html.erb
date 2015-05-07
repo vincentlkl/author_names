@@ -21,10 +21,16 @@
   <% if resource.institution.present? %>
     You are invited to <%= resource.institution.name %>.
   <% else %>
-    <%= f.label :institution_name, "Institution Name" %>
+    <%= f.label "institution[name]", "Institution Name" %>
     <p>
-      <%= text_field_tag :institution_name, nil, class: "form-control", placeholder: "Institution Name" %>
+      <%= text_field_tag "institution[name]", nil, placeholder: "Institution Name" %>
     </p>
+
+    <%= f.label "institution[decription]", "Institution Description" %>
+    <p>
+      <%= text_field_tag "institution[decription]", nil, placeholder: "Institution Description" %>
+    </p>
+
   <% end %>
 
   <p><%= f.submit t("devise.invitations.edit.submit_button"), :class => "btn btn-primary" %></p>
