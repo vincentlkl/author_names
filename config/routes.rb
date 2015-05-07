@@ -40,6 +40,7 @@ AuthorNames::Application.routes.draw do
     end
   end
 
+  resources :institutions
   resources :libraries
 
 
