@@ -49,6 +49,9 @@ class User < ActiveRecord::Base
   has_many :responses, :dependent => :destroy
   has_many :publications, :dependent => :destroy
 
+  has_one :institution_role
+  has_one :institution, :through => :institution_role
+
   SUPER_USER_TYPES = ["", "Superadmin", "Admin", "Staff", "Author"]
   USER_TYPES = ["", "Admin", "Staff", "Author"]
 

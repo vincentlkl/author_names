@@ -22,6 +22,7 @@
 #
 
 class Institution < ActiveRecord::Base
+  has_many :institution_roles
   attr_accessible :name, :description, :contact_name,
                   :phone, :email, :address_1, :address_2,
                   :city, :state, :postal_code, :country,

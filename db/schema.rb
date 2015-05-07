@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150507072227) do
+ActiveRecord::Schema.define(:version => 20150507091817) do
 
   create_table "authors", :force => true do |t|
     t.string   "phone",                       :null => false
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20150507072227) do
     t.integer "form_item_id"
     t.integer "questionnaire_id"
     t.integer "position",         :default => 0, :null => false
+  end
+
+  create_table "institution_roles", :force => true do |t|
+    t.integer  "institution_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "institutions", :force => true do |t|
