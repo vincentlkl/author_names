@@ -88,22 +88,22 @@ ActiveRecord::Schema.define(:version => 20150507091817) do
   end
 
   create_table "institutions", :force => true do |t|
-    t.string   "name",                        :null => false
+    t.string   "name"
     t.text     "description"
-    t.string   "contact_name",                :null => false
-    t.string   "phone",                       :null => false
-    t.string   "email",                       :null => false
-    t.string   "address_1",    :limit => 150, :null => false
-    t.string   "address_2",    :limit => 150
-    t.string   "city",         :limit => 100, :null => false
-    t.string   "state",        :limit => 100, :null => false
-    t.string   "postal_code",  :limit => 30,  :null => false
-    t.string   "country",                     :null => false
+    t.string   "contact_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "country"
     t.string   "website"
     t.string   "logo"
     t.string   "company_type"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "libraries", :force => true do |t|
