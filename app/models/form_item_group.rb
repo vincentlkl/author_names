@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: form_item_groups
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  publisher_id     :integer
+#  questionnaire_id :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class FormItemGroup < ActiveRecord::Base
   attr_accessible :name, :publisher
   

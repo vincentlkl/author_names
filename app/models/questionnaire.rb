@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: questionnaires
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  description  :text
+#  version      :string(255)
+#  publisher_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Questionnaire < ActiveRecord::Base
   include ActionDispatch::Routing::UrlFor
   include Rails.application.routes.url_helpers
