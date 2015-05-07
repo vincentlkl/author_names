@@ -1,0 +1,18 @@
+<%= form_tag batch_invitations_users_path, :method => :post do %>
+  <%= label_tag :user_emails, "Emails of people you'd like to invite." %>
+  <p>
+    <%= text_area_tag :user_emails, "", :class => "form-control" %>
+  </p>
+
+  <%= label_tag :institution, "Institution" %>
+  <p>
+    <%= select_tag :institution, options_from_collection_for_select(Institution.all, "id", "name"), :include_blank => true %>
+  </p>
+
+  <%= label_tag :institution_role, "Institution Role" %>
+  <p>
+    <%= select_tag :institution_role, options_for_select(["users","author","admin"]) %>
+  </p>
+
+  <%= submit_tag "Invite!" %>
+<% end %>

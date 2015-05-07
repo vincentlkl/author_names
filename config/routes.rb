@@ -54,6 +54,8 @@ AuthorNames::Application.routes.draw do
       get 'authors'
       get 'bulk_users'
       get 'make_staff'
+      get 'invitations'
+      post 'batch_invitations'
     end
   end
 

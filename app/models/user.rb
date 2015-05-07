@@ -214,4 +214,13 @@ class User < ActiveRecord::Base
       :body => "<p>Please <a href='#{ROOT_URL}#{path}'>create</a> an account.</p>"
     )
   end
+
+  def add_institution_role(institution,role)
+    user = self.build_institution_role({
+        :institution_id => institution,
+        :role => role
+      })
+    user.save
+  end
+
 end

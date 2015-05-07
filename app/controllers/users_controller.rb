@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_superadmin_or_admin!, :except => [:edit, :update]
-  
+
   def index
     @staff = current_user.my_staff
     @admin = current_user.my_admin
@@ -9,11 +9,11 @@ class UsersController < ApplicationController
     @unaffiliated = User.all(:conditions => {:publisher_id => nil, :library_id => nil, :superadmin => false})
     @superadmins = User.all(:conditions => {:superadmin => true})
   end
-  
+
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(params[:user])
     @user.password = User.random_password
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     params[:user_type] == "Admin" ? @user.admin = true : @user.admin = false
     params[:user_type] == "Staff" ? @user.staff = true : @user.staff = false
     params[:user_type] == "Superadmin" ? @user.superadmin = true : @user.superadmin = false
-  
+
     respond_to do|format|
       if @user.save
         flash[:notice] = 'Added that User'
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    
+
     unless current_user.try(:superadmin?) || current_user.try(:admin?) || @user.email == current_user.email
        redirect_to('/') and return
     end
@@ -47,11 +47,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    
+
     unless current_user.try(:superadmin?) || current_user.try(:admin?) || @user.email == current_user.email
        redirect_to('/') and return
     end
-    
+
     user = @user
     if @user.destroy
       flash[:notice] = %Q|Deleted user #{user.full_name_email}|
@@ -66,17 +66,17 @@ class UsersController < ApplicationController
     unless current_user.try(:superadmin?) || current_user.try(:admin?) || @user.email == current_user.email
        redirect_to('/') and return
     end
-    
-    unless current_user.try(:superadmin?) 
+
+    unless current_user.try(:superadmin?)
       unless params[:user][:library].nil?
         params[:user][:library_id] = Library.find_by_name(params[:user][:library]).id
       end
       unless params[:user][:publisher].nil?
         params[:user][:publisher_id] = Publisher.find_by_name(params[:user][:publisher]).id
-      end  
-    end  
-    
-    if current_user.try(:superadmin?) 
+      end
+    end
+
+    if current_user.try(:superadmin?)
       if !@user.publisher.nil? && !params[:user][:library_id].nil?
         p "was publisher now library"
         params[:user][:publisher_id] = nil
@@ -85,14 +85,14 @@ class UsersController < ApplicationController
         p "was library now publisher"
         params[:user][:library_id] = nil
       end
-    end 
+    end
     params[:user] = params[:user].delete_if{|key, value| key == "publisher" || key == "library" }
     # admin = params[:user][:admin]
     # staff = params[:user][:staff]
     # author = params[:user][:author]
     # superadmin = params[:user][:superadmin]
     # params[:user] = params[:user].delete_if{|key, value| key == "admin" || key == "staff" || key == "author" || key == "superadmin" }
-    
+
     @user.attributes = params[:user]
     params[:user_type] == "Author" ? @user.author = true : @user.author = false
     params[:user_type] == "Admin" ? @user.admin = true : @user.admin = false
@@ -102,8 +102,8 @@ class UsersController < ApplicationController
     if @user.superadmin
       @user.publisher = nil
       @user.library = nil
-    end  
-    
+    end
+
     respond_to do|format|
       if @user.save
         unless @user.authors.nil?
@@ -112,7 +112,7 @@ class UsersController < ApplicationController
             a.first_name = @user.first_name
             a.last_name = @user.last_name
             a.save
-          end  
+          end
         end
         flash[:notice] = %Q|#{@user} updated|
         format.html {redirect_to :action => :index}
@@ -122,11 +122,11 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def authors
     @authors = current_user.my_authors
   end
-  
+
   def make_staff
     @user = User.find(params[:id])
     @user.staff = true
@@ -134,11 +134,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was changed to Staff.' }
     end
-    
-  end  
-  
+
+  end
+
   def bulk_users
-    emails = Array.new  
+    emails = Array.new
     unless params[:new_emails].blank?
       emails << params[:new_emails].split(",").each{|e| e.strip!}
       emails.flatten!
@@ -147,14 +147,14 @@ class UsersController < ApplicationController
       unless params[:new_emails].blank?
         unless params[:publisher_id].nil? || params[:publisher_id].blank?
           emails.collect{|e| e.strip}.each do |email|
-            current_user.send_new_publisher_user_email(email, "#{new_user_registration_path(:publisher_id => params[:publisher_id], :email => email)}") 
-          end  
+            current_user.send_new_publisher_user_email(email, "#{new_user_registration_path(:publisher_id => params[:publisher_id], :email => email)}")
+          end
         end
         unless params[:library_id].nil? || params[:library_id].blank?
           emails.collect{|e| e.strip}.each do |email|
-            current_user.send_new_library_user_email(email, "#{new_user_registration_path(:library_id => params[:library_id], :email => email)}") 
-          end  
-        end  
+            current_user.send_new_library_user_email(email, "#{new_user_registration_path(:library_id => params[:library_id], :email => email)}")
+          end
+        end
         format.html { redirect_to users_url, notice: 'Users were successfully invited.' }
         format.json { head :no_content }
       else
@@ -162,5 +162,26 @@ class UsersController < ApplicationController
         format.json { head :no_content }
       end
     end
+  end
+
+  def batch_invitations
+    all_users        = []
+    institution      = params[:institution]
+    institution_role = params[:institution_role]
+
+    if params[:user_emails].present?
+      params[:user_emails].split(",").each do |email|
+        email = email.delete(' ')
+        all_users << email
+        user = User.invite!(:email => email)
+        if institution.present?
+          user.add_institution_role(institution,institution_role)
+        end
+      end
+      redirect_to invitations_users_path, notice: "#{all_users.join(',')} has been invited."
+    else
+      redirect_to invitations_users_path, notice: "Email cannot be blank."
+    end
+
   end
 end

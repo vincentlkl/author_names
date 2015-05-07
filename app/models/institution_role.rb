@@ -13,4 +13,6 @@
 class InstitutionRole < ActiveRecord::Base
   belongs_to :institution
   belongs_to :user
+
+  attr_accessible :institution_id, :role
 end
