@@ -18,5 +18,14 @@
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
+  <% if resource.institution.present? %>
+    You are invited to <%= resource.institution.name %>.
+  <% else %>
+    <%= f.label :institution_name, "Institution Name" %>
+    <p>
+      <%= text_field_tag :institution_name, nil, class: "form-control", placeholder: "Institution Name" %>
+    </p>
+  <% end %>
+
+  <p><%= f.submit t("devise.invitations.edit.submit_button"), :class => "btn btn-primary" %></p>
 <% end %>
