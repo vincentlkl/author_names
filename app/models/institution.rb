@@ -22,5 +22,8 @@
 #
 
 class Institution < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name, :description, :contact_name,
+                  :phone, :email, :address_1, :address_2,
+                  :city, :state, :postal_code, :country,
+                  :website, :logo, :company_type
 end
