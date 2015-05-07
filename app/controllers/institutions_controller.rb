@@ -9,6 +9,10 @@ class InstitutionsController < ApplicationController
     @institution = Institution.new
   end
 
+  def show
+    @institution = Institution.find(params[:id])
+  end
+
   def create
     @institution = Institution.new(params[:institution])
     respond_to do |format|
