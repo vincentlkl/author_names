@@ -1,61 +1,50 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# gem 'therubyracer'
-gem 'devise',            '~> 2.2.1'
-gem 'devise_invitable',  '~> 1.1.8'
-gem 'formtastic'
-gem 'will_paginate'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails',          '4.2.1'
 gem 'pg'
-gem 'carrierwave'
-gem 'formtastic-bootstrap'
-gem 'jquery-tablesorter'
-gem 'ckeditor'
-gem 'country_select'
-gem 'acts_as_list'
 
+gem 'sass-rails',     '~> 5.0'
+gem 'uglifier',       '>= 1.3.0'
+gem 'coffee-rails',   '~> 4.1.0'
+gem 'jquery-rails'
+gem 'less-rails',     '~> 2.7.0'
+gem 'jbuilder',       '~> 2.0'
+gem 'sdoc',           '~> 0.4.0', group: :doc
 
-# Gems used only for assets and not required
-# in production environments by default.
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'therubyracer', platforms: :ruby
+gem 'rails_12factor', group: :production
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem "less-rails"
-  gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 
 group :development do
-  gem 'letter_opener',   '~> 1.3.0'
-  gem 'better_errors',   '~> 1.1.0'
-  gem 'annotate',        '~> 2.6.5'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'mailcatcher'
+  gem 'annotate'
 end
 
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-#heroku
-gem 'rails_12factor', group: :production
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-mocks'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'ffaker', "~>1.32.1"
+  gem 'bullet'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+# other gems
+gem 'twitter-bootstrap-rails',         '~> 3.2.0'
+gem 'font-awesome-rails',              '~> 4.3.0.0'
+gem 'devise',                          '~> 3.4.1'
+gem 'devise_invitable',                '~> 1.4.2'

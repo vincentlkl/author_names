@@ -1,19 +1,43 @@
-<div class="col-lg-12">
-  <h2><%= @institution.name %></h2>
-  <div class="row">
-    <div class="well">
-		  Description: <%= @institution.description %><br />
-		  Contact Name: <%= @institution.contact_name %><br />
-		  Email: <%= @institution.email %><br />
-		  Phone: <%= @institution.phone %><br />
-		  Address 1: <%= @institution.address_1 %><br />
-		  Address 2: <%= @institution.address_2 %><br />
-		  City: <%= @institution.city %><br />
-		  State: <%= @institution.state %><br />
-		  Postal Code: <%= @institution.postal_code %><br />
-		  Country: <%= @institution.country %><br />
-		  Website: <%= @institution.website %><br />
-			Company Type: <%= @institution.company_type %><br />
-    </div>
-  </div>
-</div>
+<h2>Institutions - <%= @institution.name %></h2>
+<hr/>
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= @institution.name %></dd>
+
+  <dt>Contact Name</dt>
+  <dd><%= @institution.contact_name %></dd>
+
+  <dt>Phone</dt>
+  <dd><%= @institution.phone %></dd>
+
+  <dt>Email</dt>
+  <dd><%= @institution.email %></dd>
+
+  <dt>Address 1</dt>
+  <dd><%= @institution.address_1 %></dd>
+
+  <dt>Address 2</dt>
+  <dd><%= @institution.address_2 %></dd>
+
+  <dt>City</dt>
+  <dd><%= @institution.city %></dd>
+
+  <dt>State</dt>
+  <dd><%= @institution.state %></dd>
+
+  <dt>Postal Code</dt>
+  <dd><%= @institution.postal_code %></dd>
+
+  <dt>Country</dt>
+  <dd><%= @institution.country %></dd>
+
+  <dt>Website</dt>
+  <dd><%= @institution.website %></dd>
+
+  <dt>Company</dt>
+  <dd><%= @institution.company %></dd>
+
+  <dt>Description</dt>
+  <dd><%= @institution.description %></dd>
+
+</dl>
