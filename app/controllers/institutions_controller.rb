@@ -1,5 +1,5 @@
 class InstitutionsController < ApplicationController
-before_filter :authenticate_user!
+# before_filter :authenticate_user!
 
   def index
     @institutions = Institution.all
@@ -44,5 +44,5 @@ private
     columns = Institution.strong_parameters
 		params.require(:institution)
 		.permit(columns)
-	end  
+	end
 end
