@@ -31,16 +31,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'rspec-mocks'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
-  gem 'capybara'
-  gem 'capybara-email'
-  gem 'ffaker', "~>1.32.1"
-  gem 'bullet'
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem 'rspec-rails',       '~> 3.2.1'
+  gem 'rspec-core',        '~> 3.2.3'
+  gem 'factory_girl',      '~> 4.5.0'
 end
 
 # other gems
