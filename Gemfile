@@ -26,7 +26,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'mailcatcher'
+  gem 'letter_opener',          '~> 1.4.0'
   gem 'annotate'
 end
 
