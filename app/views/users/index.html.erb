@@ -1,0 +1,42 @@
+<h1>Users</h1>
+<hr/>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <% if current_user.role == "superadmin" %>
+      <th>Institution</th>
+    <% end %>
+    <th>Institution Role</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.email %>
+        </td>
+
+        <td>
+          <%= user.email %>
+        </td>
+
+        <% if current_user.role == "superadmin" %>
+          <td>
+            <%= user.institution.name.titleize if user.institution.present? %>
+          </td>
+        <% end %>
+
+        <td>
+          <%= user.institution_role.role.titleize if user.institution_role.present? %>
+        </td>
+
+        <td>
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, user_path(user) %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_user_path(user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
