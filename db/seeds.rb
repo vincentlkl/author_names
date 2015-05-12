@@ -4,4 +4,9 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# for user
+user = User.create(email: 'admin@gmail.com', password: 'boston', password_confirmation: 'boston', role: "superadmin")
+institution = Institution.create(name: 'SuperAdminCompany', company_type: 'library')
+user.build_institution_role({role: "admin", institution: institution})
+user.save!
