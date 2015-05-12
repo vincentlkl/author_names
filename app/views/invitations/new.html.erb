@@ -11,11 +11,17 @@
   <div class="row">
     <div class="col-sm-6">
       <%= label_tag :institution, "Institution" %>
-      <p>
-        <%= select_tag :institution, options_from_collection_for_select(Institution.all, "id", "name"), :include_blank => true, :class => "form-control" %>
-      </p>
-      <p><hint class="hint">By leaving empty to allow users to create their own insitution and be an admin for that institution.</hint></p>
-
+      <% if current_user.role == "superadmin" %>
+        <p>
+          <%= select_tag :institution, options_from_collection_for_select(Institution.all, "id", "name"), :include_blank => true, :class => "form-control" %>
+        </p>
+        <p><hint class="hint">By leaving empty to allow users to create their own insitution and be an admin for that institution.</hint></p>
+      <% else %>
+        <p>
+          <%= current_user.institution.name %>
+          <%= hidden_field_tag("institution", current_user.institution.id)  %>
+        </p>
+      <% end %>
       <%= label_tag :institution_role, "Institution Role" %>
       <p>
         <%= select_tag :institution_role, options_for_select(InstitutionRole.roles.keys.map {|role| [role.titleize,role]}), :class => "form-control" %>
