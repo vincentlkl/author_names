@@ -18,7 +18,7 @@ RSpec.describe InstitutionsController, type: :controller do
     before(:each) do
       @institution = FactoryGirl.create(:institution)
       @user = FactoryGirl.create(:user)
-      # sign_in @user
+      sign_in @user
     end
 
     describe "GET show" do
