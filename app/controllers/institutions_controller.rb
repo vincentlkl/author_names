@@ -41,7 +41,7 @@ before_filter :authenticate_user!
 			redirect_to institutions_path
 		else
 			flash[:alert] = "Institution has not been updated."
-			render new
+			render edit
 		end
   end
 

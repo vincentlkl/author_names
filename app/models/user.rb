@@ -42,6 +42,11 @@ class User < ActiveRecord::Base
   has_one :institution_role
   has_one :institution, :through => :institution_role
 
+  def self.strong_parameters
+    columns =[:id, :email]
+    columns
+  end
+
   def add_institution_role(institution,role)
     user = self.build_institution_role({
         :institution_id => institution,
