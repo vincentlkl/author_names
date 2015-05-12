@@ -2,7 +2,7 @@ class InstitutionsController < ApplicationController
 before_filter :authenticate_user!
 
   def index
-    if !current_user.role == "superadmin"
+    if current_user.role == "superadmin"
       @institutions = Institution.all
     else
       @institution = current_user.institution
