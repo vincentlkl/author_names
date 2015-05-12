@@ -2,7 +2,13 @@ class InstitutionsController < ApplicationController
 before_filter :authenticate_user!
 
   def index
-    @institutions = Institution.all
+    if !current_user.role == "superadmin"
+      @institutions = Institution.all
+    else
+      @institution = current_user.institution
+      render "institution"
+    end
+
   end
 
   def show
@@ -30,7 +36,7 @@ before_filter :authenticate_user!
 
   def update
     @institution = Institution.find(params[:id])
-		if (@institution.save)
+		if (@institution.update_attributes(institution_params))
 			flash[:notice] = "Institution has been updated."
 			redirect_to institutions_path
 		else
