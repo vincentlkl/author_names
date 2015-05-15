@@ -24,5 +24,8 @@
 require 'rails_helper'
 
 RSpec.describe Institution, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "must have a name" do
+    invalid_institution = FactoryGirl.build(:institution, {:name => nil})
+    expect(invalid_institution.valid?).to be false
+  end
 end

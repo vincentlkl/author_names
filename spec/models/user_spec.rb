@@ -29,5 +29,8 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has one instituiton" do
+    @user = FactoryGirl.create(:user_with_institution, instituitons_count: 1)
+    expect(@user.instituiton.count).to eq(5)
+  end
 end

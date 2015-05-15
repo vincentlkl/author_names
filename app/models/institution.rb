@@ -25,6 +25,8 @@ class Institution < ActiveRecord::Base
   has_many :users, through: :institution_roles
   has_many :institution_roles
 
+  validates :name, :presence => true
+
   def self.strong_parameters
     columns =[:id, :name, :description,
     :contact_name, :phone, :email, :address_1, :address_2,

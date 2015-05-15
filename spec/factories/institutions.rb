@@ -25,5 +25,4 @@ FactoryGirl.define do
   factory :institution do
     name "New institution"
   end
-
 end
