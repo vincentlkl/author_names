@@ -45,6 +45,32 @@ RSpec.describe InstitutionsController, type: :controller do
       end
     end
 
+    describe "POST create" do
+      it "creates a new Institution" do
+        post :create, {:institution => valid_attributes}, valid_session
+        expect(assigns(:institution)).to be_a(Institution)
+      end
+    end
+
+    describe "GET edit" do
+      it "assigns the requested institution as @institution" do
+        institution = @institution
+        get :edit, {:id => institution.to_param}, valid_session
+        expect(assigns(:institution)).to eq(institution)
+      end
+    end
+
+    describe "PUT update" do
+      describe "with valid params" do
+        it "assigns the requested bom as @bom" do
+          institution = @institution
+          put :update, {:id => institution.to_param, :institution => valid_attributes}, valid_session
+          expect(assigns(:institution)).to eq(institution)
+        end
+      end
+    end
+
+
   end
 
 end

@@ -29,8 +29,10 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it "has one instituiton" do
-    @user = FactoryGirl.create(:user_with_institution, instituitons_count: 1)
-    expect(@user.instituiton.count).to eq(5)
+  it "has one institution" do
+    @institution = FactoryGirl.create(:institution)
+    @user = FactoryGirl.create(:user)
+    @user.add_institution_role(@institution.id,'admin')
+    expect(@user.institution).to eq(@institution)
   end
 end
