@@ -1,0 +1,26 @@
+<h2>Questions</h2>
+<hr/>
+<%= link_to new_question_path, :class => "btn btn-primary" do %>
+  <i class="fa fa-plus"></i>
+  Create new question
+<% end %>
+
+<table class="table table-responsive">
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.name %></td>
+        <td><%= question.question_type %></td>
+        <td>
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, question_path(question) %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_question_path(question) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
