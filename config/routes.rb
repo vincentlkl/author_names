@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  match "questionnaires/:id/sort", to: "questionnaires#sort", :via => :post, as: "sort_questionnaires"
+
   resources "institutions"
   resources "questionnaires"
   resources "questions"

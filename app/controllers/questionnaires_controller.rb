@@ -38,6 +38,14 @@ before_filter :authenticate_user!
 		end
   end
 
+  def sort
+
+    params[:questionnaire_link].each_with_index do |id, index|
+      QuestionnaireLink.find(id).update({position: index+1})
+    end
+    render nothing: true
+  end
+
   def destroy
 
   end

@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150518032040) do
   create_table "questionnaire_links", force: :cascade do |t|
     t.integer  "questionnaire_id"
     t.integer  "question_id"
-    t.string   "position"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

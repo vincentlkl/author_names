@@ -15,6 +15,19 @@
       </div>
     </div>
 
+    <% if !@questionnaire.new_record? %>
+      <h3>All Questions</h3>
+      <hr/>
+      <ul id="questionnaires" data-update-url="<%= sort_questionnaires_url %>">
+        <% @questionnaire.questionnaire_links.each do |q| %>
+          <%= content_tag_for :li, q do %>
+            <span class="handle"><%= q.question.name %></span>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+
+
 
 
     <div class="form-group">
