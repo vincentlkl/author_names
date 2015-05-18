@@ -18,7 +18,7 @@ before_filter :authenticate_user!
 
   def create
     @questionnaire = Questionnaire.new(questionnaire_params)
-		if (@questionnaire.save)
+		if @questionnaire.save
 			flash[:notice] = "Questionnaire has been created."
 			redirect_to questionnaires_path
 		else

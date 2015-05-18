@@ -11,7 +11,7 @@
 
 class Question < ActiveRecord::Base
   has_many :questionnaire_links
-  has_many :questionnaires, :through => :questionnaire_link
+  has_many :questionnaires, through: :questionnaire_links
 
   def self.strong_parameters
     columns =[:id, :name, :question_type]
