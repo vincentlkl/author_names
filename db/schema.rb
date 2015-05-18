@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511072857) do
+ActiveRecord::Schema.define(version: 20150518032040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,31 @@ ActiveRecord::Schema.define(version: 20150511072857) do
     t.string   "website"
     t.string   "logo"
     t.string   "company_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questionnaire_links", force: :cascade do |t|
+    t.integer  "questionnaire_id"
+    t.integer  "question_id"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questionnaire_links", ["question_id"], name: "index_questionnaire_links_on_question_id", using: :btree
+  add_index "questionnaire_links", ["questionnaire_id"], name: "index_questionnaire_links_on_questionnaire_id", using: :btree
+
+  create_table "questionnaires", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
