@@ -11,7 +11,7 @@
 
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="<%= 'active' if params[:action] == 'home' %>">
           <%= link_to "Home", root_path %>
         </li>
 
@@ -23,6 +23,25 @@
 
           <li class="">
             <%= link_to "Users", users_path %>
+          </li>
+
+          <!-- questionnaires -->
+          <li class="dropdown <%= "active" if (params[:controller] == 'questionnaires' || params[:controller] == 'questions' ) %>">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Questionnaires
+            <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              <!-- questionnaires -->
+              <li>
+                <%= link_to "Questionnaires", questionnaires_path %>
+              </li>
+
+              <!-- questions -->
+              <li>
+                <%= link_to "Questions", questions_path %>
+              </li>
+
+            </ul>
           </li>
 
           <li class="dropdown">
