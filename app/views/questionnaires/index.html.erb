@@ -1,0 +1,26 @@
+<h2>Questionnaires</h2>
+<hr/>
+<%= link_to new_questionnaire_path, :class => "btn btn-primary" do %>
+  <i class="fa fa-plus"></i>
+  Create new questionnaire
+<% end %>
+
+<table class="table table-responsive">
+  <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @questionnaires.each do |questionnaire| %>
+      <tr>
+        <td><%= questionnaire.name %></td>
+        <td><%= questionnaire.description %></td>
+        <td>
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, questionnaire_path(questionnaire) %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_questionnaire_path(questionnaire) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

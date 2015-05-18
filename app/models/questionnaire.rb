@@ -12,4 +12,9 @@
 class Questionnaire < ActiveRecord::Base
   has_many :questionnaire_links
   has_many :questions, :through => :questionnaire_link
+
+  def self.strong_parameters
+    columns =[:id, :name, :description]
+    columns
+  end
 end
