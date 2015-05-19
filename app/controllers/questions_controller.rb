@@ -18,6 +18,7 @@ before_filter :authenticate_user!
 
   def create
     @question = Question.new(question_params)
+    @question.institution_id = current_user.institution.id.to_i
 		if (@question.save)
 			flash[:notice] = "Question has been created."
 			redirect_to questions_path

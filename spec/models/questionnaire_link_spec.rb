@@ -5,7 +5,7 @@
 #  id               :integer          not null, primary key
 #  questionnaire_id :integer
 #  question_id      :integer
-#  position         :string
+#  position         :integer
 #  created_at       :datetime
 #  updated_at       :datetime
 #

@@ -18,6 +18,7 @@ before_filter :authenticate_user!
 
   def create
     @questionnaire = Questionnaire.new(questionnaire_params)
+    @questionnaire.institution_id = current_user.institution.id.to_i
 		if @questionnaire.save
 			flash[:notice] = "Questionnaire has been created."
 			redirect_to questionnaires_path
@@ -39,7 +40,6 @@ before_filter :authenticate_user!
   end
 
   def sort
-
     params[:questionnaire_link].each_with_index do |id, index|
       QuestionnaireLink.find(id).update({position: index+1})
     end
