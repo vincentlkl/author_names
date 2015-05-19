@@ -5,7 +5,7 @@ before_filter :authenticate_user!
   end
 
   def show
-    @questionnaire = Questionnaire.find(params[:id])
+    @questionnaire = Questionnaire.includes(:questions).find(params[:id])
   end
 
   def new

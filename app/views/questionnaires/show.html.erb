@@ -1,4 +1,22 @@
 <h2>Questionnaires</h2>
 <hr/>
 <%= render 'summary' %>
+
+<h3>All Questions</h3>
+<hr/>
+
+<table class="table">
+  <thead>
+    <th class="col-sm-1">#</th>
+    <th>Questions</th>
+  </thead>
+  <% @questionnaire.questionnaire_links.each_with_index do |q,index| %>
+    <tr>
+      <td><%= (index+1) %> </td>
+      <td><%= q.question.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+
 <%= link_to "Back to questionnaires", questionnaires_path %>

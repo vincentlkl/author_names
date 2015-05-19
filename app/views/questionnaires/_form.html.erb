@@ -18,20 +18,18 @@
     <% if !@questionnaire.new_record? %>
       <h3>All Questions</h3>
       <hr/>
+
       <ul id="questionnaires" data-update-url="<%= sort_questionnaires_url %>">
-        <% @questionnaire.questionnaire_links.each do |q| %>
+        <% @questionnaire.questionnaire_links.each_with_index do |q,index| %>
           <%= content_tag_for :li, q do %>
-            <span class="handle"><%= q.question.name %></span>
+            <span class="handle"><%= (index+1) %>.) <%= q.question.name %></span>
           <% end %>
         <% end %>
       </ul>
     <% end %>
 
-
-
-
     <div class="form-group">
-      <%= f.label :questions, "Add Questions", :class => "col-sm-12 control-label", :style => "text-align: left;" %>
+      <%= f.label :questions, "#{@questionnaire.new_record? ? 'Add Questions' : 'Add or Remove a Question' }", :class => "col-sm-12 control-label", :style => "text-align: left;" %>
       <div class="col-sm-12">
         <%= hidden_field_tag 'questionnaire[question_ids][]', nil %>
         <% Question.all.each do |question| %>
