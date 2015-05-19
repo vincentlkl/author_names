@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :question do
-    
+    name "New question"
   end
 
 end

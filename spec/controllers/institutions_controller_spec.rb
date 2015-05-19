@@ -62,7 +62,7 @@ RSpec.describe InstitutionsController, type: :controller do
 
     describe "PUT update" do
       describe "with valid params" do
-        it "assigns the requested bom as @bom" do
+        it "assigns the requested institution as @institution" do
           institution = @institution
           put :update, {:id => institution.to_param, :institution => valid_attributes}, valid_session
           expect(assigns(:institution)).to eq(institution)
