@@ -1,0 +1,26 @@
+<h2>Answers for </h2>
+<hr/>
+<%= link_to new_questionnaire_answer_path(@questionnaire), :class => "btn btn-primary" do %>
+  <i class="fa fa-plus"></i>
+  Create new answer for <%= @questionnaire.name %>
+<% end %>
+
+<table class="table table-responsive">
+  <thead>
+    <th>#</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @answers.each_with_index do |answer,index| %>
+      <tr>
+        <td><%= (index + 1) %></td>
+        <td><%= answer.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
+        <td>
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, questionnaire_answer_path(@questionnaire,answer) %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_questionnaire_answer_path(@questionnaire,answer) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

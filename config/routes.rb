@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   match "questionnaires/:id/sort", to: "questionnaires#sort", :via => :post, as: "sort_questionnaires"
 
   resources "institutions"
-  resources "questionnaires"
+  resources "questionnaires" do
+    resources "answers"
+  end
   resources "questions"
 
   devise_for :users, :controllers => { :invitations => 'invitations' }

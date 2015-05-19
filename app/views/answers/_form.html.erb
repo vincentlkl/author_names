@@ -1,0 +1,14 @@
+<div class="col-sm-10">
+  <%= form_for [@questionnaire,@answer], :html => {class: "form-horizontal"} do |f| %>
+    <%= f.hidden_field :questionnaire_id, :value => @questionnaire.id %>
+    <%= f.fields_for :questions do |f2| %>
+      <% @questions.each do |question| %>
+        <p><%= f2.label ("#{question.id}".to_sym), question.name  %></p>
+        <p><%= f2.text_field ("#{question.id}".to_sym)  %></p>
+      <% end %>
+    <% end %>
+
+    <%= f.submit "#{@answer.new_record? ? 'Create' : 'Update'}", class: "btn btn-primary" %>
+
+  <% end %>
+</div>

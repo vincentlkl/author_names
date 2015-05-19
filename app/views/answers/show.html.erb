@@ -1,0 +1,21 @@
+<h2>Answers </h2>
+<hr/>
+
+<table class="table">
+  <thead>
+    <th class="col-sm-1">#</th>
+    <th>Questions</th>
+  </thead>
+  <% @answer.questions.each_with_index do |question,index| %>
+    <tr>
+      <td><%= (index+1) %> </td>
+      <td>
+        <p><strong><%= question[0] %></strong></p>
+        <p>Ans: <%= question[1] %></p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to "Back to questionnaires", questionnaire_answers_path(@questionnaire) %>
