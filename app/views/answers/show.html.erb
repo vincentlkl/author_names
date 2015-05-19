@@ -10,7 +10,7 @@
     <tr>
       <td><%= (index+1) %> </td>
       <td>
-        <p><strong><%= question[0] %></strong></p>
+        <p><strong><%= Question.find(question[0]).name %></strong></p>
         <p>Ans: <%= question[1] %></p>
       </td>
     </tr>
