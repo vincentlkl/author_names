@@ -1,1 +1,26 @@
 HOME PAGE HERE
+<br/>
+
+<% if user_signed_in? %>
+  <% unless current_user.role != "superadmin" and current_user.institution.blank? %>
+
+    <br/>
+    <br/>
+    <!-- add a questionnaires -->
+    <%= link_to new_questionnaire_path, :class => "btn btn-primary" do %>
+      <i class="fa fa-plus"></i>
+       Add a questionnaire
+    <% end %>
+
+    <br/>
+    <br/>
+
+    <!-- add a question -->
+    <%= link_to new_question_path, :class => "btn btn-info" do %>
+      <i class="fa fa-plus"></i>
+      Add a question
+    <% end %>
+
+
+  <% end %>
+<% end %>
