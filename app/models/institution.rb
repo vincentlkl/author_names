@@ -25,6 +25,9 @@ class Institution < ActiveRecord::Base
   has_many :users, through: :institution_roles
   has_many :institution_roles
 
+  has_many :questions
+  has_many :questionnaires
+
   validates :name, :presence => true
 
   def self.strong_parameters

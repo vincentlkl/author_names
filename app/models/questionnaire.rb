@@ -11,8 +11,11 @@
 #
 
 class Questionnaire < ActiveRecord::Base
-  has_many :questionnaire_links, ->{ order 'position' }
-  has_many :questions, through: :questionnaire_links
+
+  belongs_to :institution
+
+  has_many   :questionnaire_links, ->{ order 'position' }
+  has_many   :questions, through: :questionnaire_links
 
   def self.strong_parameters
     columns =[:id, :name, :description, :institution_id, question_ids: []]
