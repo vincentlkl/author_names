@@ -17,13 +17,15 @@
 
         <% if user_signed_in? %>
 
-          <li class="">
-            <%= link_to "Institutions", institutions_path %>
-          </li>
+          <% unless current_user.role != "superadmin" and current_user.institution.blank? %>
+            <li class="">
+              <%= link_to "Institutions", institutions_path %>
+            </li>
 
-          <li class="">
-            <%= link_to "Users", users_path %>
-          </li>
+            <li class="">
+              <%= link_to "Users", users_path %>
+            </li>
+          <% end %>
 
           <!-- questionnaires -->
           <li class="dropdown <%= "active" if (params[:controller] == 'questionnaires' || params[:controller] == 'questions' ) %>">

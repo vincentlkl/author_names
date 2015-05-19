@@ -5,8 +5,7 @@ before_filter :authenticate_user!
     if current_user.role == "superadmin"
       @users = User.all
     else
-      institution =
-      @users = current_user.institution.users
+      @users = current_user.institution.present? ? current_user.institution.users : []
     end
 
   end
