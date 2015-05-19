@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519072726) do
+ActiveRecord::Schema.define(version: 20150519081603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "questionnaire_id"
+    t.hstore   "questions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["questionnaire_id"], name: "index_answers_on_questionnaire_id", using: :btree
+  add_index "answers", ["questions"], name: "index_answers_on_questions", using: :btree
 
   create_table "institution_roles", force: :cascade do |t|
     t.integer  "institution_id"
